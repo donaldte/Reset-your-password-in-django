@@ -1,0 +1,17 @@
+<h1> Login by filling this form </h1>
+
+{% if request.user.is_authenticated %}
+<h2>Your are login </h2>
+<!-- here it's the link to log out  -->
+<a href="{% url 'logout' %}"> logout</a>
+
+{% else %}
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> login </button>
+</form>
+<h3>have you forget your password? clickez </h3><a href="{% url 'password_reset' %}">reset </a>
+
+
+{% endif %}
